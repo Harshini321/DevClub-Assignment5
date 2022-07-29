@@ -1,0 +1,31 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+{% if not announcements %}
+    <h3>No announcements Yet!</h3>
+{% else %}
+    {% if user.is_superuser or user.email|slice:4 == 'prof' %}
+        <a
+            class="btn btn-secondary btn-sm mt-1 mb-3"
+            href="{% url 'announcement-create' %}"
+            >Post New Announcement</a
+        >
+    {% endif %}
+    {% for announcement in announcements %}
+        <article class="media content-section">
+            {% comment %} <img class='rounded-circle article-img' src="#"> {% endcomment %}
+            <div class="media-body">
+            <div class="article-metadata">
+                <a class="mr-2" href="{% url 'user-announcement' announcement.author.username %}">{{ announcement.author }}</a>
+                <small class="text-muted">{{ announcement.date_posted | date:'F d, Y' }}</small>
+                {% comment %} <small class="text-muted">{{ post.date_posted | date:'F d, Y' }}</small> {% endcomment %}
+            </div>
+            <h3><a class="article-title" href="{% url 'announcement-detail' announcement.id %}">{{ announcement.title }}</a></h3>
+            <p class="article-content">{{ announcement.content }}</p>
+            </div>
+        </article>
+    {% endfor %}
+
+{% endif %}
+
+{% endblock content %}

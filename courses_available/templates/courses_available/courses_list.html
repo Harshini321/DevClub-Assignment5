@@ -1,0 +1,29 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+    {% if user.is_superuser %}
+        <a
+            class="btn btn-secondary btn-sm mt-1 mb-3"
+            href="{% url 'course-create' %}"
+            >Add New Course</a
+        >
+    {% endif %}
+    {% for course in allCourses %}
+
+        <article class="media content-section">
+            {% comment %} <img class='rounded-circle article-img' src="#"> {% endcomment %}
+            <div class="media-body">
+            <div class="article-metadata">
+                <h4 class="article-title ">Course : {{ course.title }}</h4>
+                
+                {% comment %} <small class="text-muted">{{ post.date_posted | date:'F d, Y' }}</small> {% endcomment %}
+            </div>
+            <p class="mr-2 mt-2">Course Instructor : {{ course.course_head }}</p>
+            {% comment %} <h2 class="article-title" >{{ course.title }}</h2> {% endcomment %}
+            <p class="article-content">Description : {{ course.description }}</p>
+            <button type="button" class="btn btn-outline-info">Register</button>
+            </div>
+        </article>
+    {% endfor %}
+
+{% endblock content %}

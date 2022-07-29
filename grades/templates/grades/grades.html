@@ -1,0 +1,32 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+
+    {% if user.is_superuser or user.email|slice:4 == 'prof' %}
+        <a
+            class="btn btn-secondary btn-sm mt-1 mb-3"
+            href="{% url 'grade-create' %}"
+            >Add New Grades</a
+        >
+    {% endif %}
+
+    {% if not grades %}
+        <h3>Oops! nothing here</h3>
+    {% endif %}
+
+    {% for grade in grades %}
+        <article class="media content-section">
+            {% comment %} <img class='rounded-circle article-img' src="#"> {% endcomment %}
+            <div class="media-body">
+            <div class="article-metadata">
+                <p>{{ grade.student }}</p>
+                {% comment %} <small class="text-muted">{{ grade.date_posted | date:'F d, Y' }}</small> {% endcomment %}
+                {% comment %} <small class="text-muted">{{ post.date_posted | date:'F d, Y' }}</small> {% endcomment %}
+            </div>
+            <h3 class="article-title">{{ grade.course }}</h3>
+            <p class="article-content">{{ grade.marks }}</p>
+            </div>
+        </article>
+    {% endfor %}
+
+{% endblock content %}

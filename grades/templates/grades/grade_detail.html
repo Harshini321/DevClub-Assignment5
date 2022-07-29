@@ -1,0 +1,32 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+
+    <article class="media content-section">
+        {% comment %} <img class='rounded-circle article-img' src="#"> {% endcomment %}
+        <div class="media-body">
+        <div class="article-metadata">
+            <a class="mr-2" href="#">{{ object.student }}</a>
+            {% if user.is_superuser %}
+                <div>
+                    <a
+                    class="btn btn-secondary btn-sm mt-1 mb-1"
+                    href="{% url 'grade-update' object.id %}"
+                    >Update</a
+                    >
+                    <a
+                    class="btn btn-danger btn-sm mt-1 mb-1"
+                    href="{% url 'grade-delete' object.id %}"
+                    >Delete</a
+                    >
+                </div>
+            {% endif %}
+            {% comment %} <small class="text-muted">{{ post.date_posted | date:'F d, Y' }}</small> {% endcomment %}
+        </div>
+        <h3 class="article-title">{{ object.course }}</h3>
+        <p class="article-content">{{ object.marks }}</p>
+        </div>
+    </article>
+    
+
+{% endblock content %}

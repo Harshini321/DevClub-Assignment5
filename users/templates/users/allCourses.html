@@ -1,0 +1,23 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+{% for course in allCourses %}
+
+    <article class="media content-section">
+        <img class='rounded-circle article-img' src="#">
+        <div class="media-body">
+        <div class="article-metadata">
+            <a class="mr-2" href="#">{{ course.course_head }}</a>
+            {% comment %} <small class="text-muted">{{ post.date_posted | date:'F d, Y' }}</small> {% endcomment %}
+        </div>
+        <h2><a class="article-title" href="#">{{ course.title }}</a></h2>
+        <p class="article-content">{{ course.description }}</p>
+        <button type="button" class="btn btn-outline-info">Register</button>
+        </div>
+    </article>
+{% endfor %}
+{% comment %} 
+</div>
+    <p class="article-content">Wish you high CGPA</p>
+</div> {% endcomment %}
+{% endblock content %}
