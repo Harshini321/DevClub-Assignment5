@@ -31,6 +31,11 @@ class Instructor(models.Model):
         return self.user.username
 
 
+# class InstructorName(models.Model):
+#     user=models.OneToOneField(User,on_delete=models.CASCADE)
+
+#     def __str__(self):
+#         return self.user.username
 
 class Admin(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE)

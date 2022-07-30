@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404
 from .models import Grade
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 from django.views.generic import (
@@ -17,14 +18,14 @@ from django.views.generic import (
 
 
 # Create your views here.
-
+@login_required
 def index(request):
     context={
         'grades':Grade.objects.filter(student=request.user)
     }
     return render(request,'grades/grades.html',context)
 
-class GradeDetailView(DetailView):
+class GradeDetailView(LoginRequiredMixin,DetailView):
     model=Grade
 
 
