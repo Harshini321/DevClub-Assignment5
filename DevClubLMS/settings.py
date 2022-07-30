@@ -146,3 +146,6 @@ EMAIL_USE_TLS=True
 # EMAIL_HOST_USER=os.environ.get('EMAIL_USER')
 # EMAIL_HOST_USER=os.environ.get('EMAIL_USER')
 # EMAIL_HOST_PASSWORD=os.environ.get("EMAIL_PASS")
+EMAIL_HOST_USER='harshinipenta@gmail.com'
+# EMAIL_HOST_PASSWORD='wkigsiyqtyineofg'
+EMAIL_HOST_PASSWORD='difcigdtkszftavt'

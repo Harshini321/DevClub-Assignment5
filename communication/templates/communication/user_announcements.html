@@ -7,7 +7,7 @@
 {% else %}
     {% if user.is_superuser or user.email|slice:4 == 'prof' %}
         <a
-            class="btn btn-secondary btn-sm mt-1 mb-3"
+            class="btn btn-outline-info btn-sm mt-1 mb-3"
             href="{% url 'announcement-create' %}"
             >Post New Announcement</a
         >

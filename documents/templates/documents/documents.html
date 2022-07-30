@@ -10,21 +10,28 @@
             href="{% url 'document-create' %}"
             >Post New document</a
         >
-    {% endif %}
     {% for document in documents %}
         <article class="media content-section">
             {% comment %} <img class='rounded-circle article-img' src="#"> {% endcomment %}
             <div class="media-body">
             <div class="article-metadata">
-                <a class="mr-2" href="{% url 'user-document' document.author.username %}">{{ document.author }}</a>
+                <a class="mr-2 color" href="{% url 'user-document' document.author.username %}">{{ document.author }}</a>
                 <small class="text-muted">{{ document.date_posted | date:'F d, Y' }}</small>
                 {% comment %} <small class="text-muted">{{ post.date_posted | date:'F d, Y' }}</small> {% endcomment %}
             </div>
-            <h2><a class="article-title" href="{% url 'document-detail' document.id %}">{{ document.title }}</a></h2>
-            <h4><a class="article-title" href="{{ document.file.url }}">View Document</a></h4>
+            <h4><a class="article-title" href="{% url 'document-detail' document.id %}">{{ document.title }}</a></h4>
+            <h6><a class="article-title color" href="{{ document.file.url }}">View Document</a></h6>
             </div>
         </article>
     {% endfor %}
+    {% else %}
+        <h3>Please login as Instrucor or admin to access this content</h3>
+        <div class="border-top pt-3">
+            <p class="text-muted">
+                <a class='color' href="{% url 'login' %}">Log In</a>
+            </p>
+        </div> 
+    {% endif %}
 
 {% endif %}
 

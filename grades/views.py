@@ -21,7 +21,8 @@ from django.views.generic import (
 @login_required
 def index(request):
     context={
-        'grades':Grade.objects.filter(student=request.user)
+        'grades':Grade.objects.filter(student=request.user),
+        'allGrades':Grade.objects.all()
     }
     return render(request,'grades/grades.html',context)
 

@@ -66,9 +66,26 @@ class UserAnnListView(LoginRequiredMixin,ListView):
     model=Announcement
     template_name='communication/user_announcements.html'
     context_object_name='announcements'
+    # def test_func(self):
+    #     user1=self.request.user
+    #     user2=get_object_or_404(User,username=self.kwargs.get('username'))
+    #     if user1.is_superuser or user1.email[0:4] == 'prof':
+    #         return True
+    #     else:
+    #         courses=user1.courses.all()
+    #         print(courses)
+    #         for course in courses:
+    #             if course.course_head == user2 :
+    #                 return True
+    #     return False
     
     def get_queryset(self):
         user=get_object_or_404(User,username=self.kwargs.get('username'))
-        print(Announcement.objects.filter(author=user))
         return Announcement.objects.filter(author=user).order_by('-date_posted')
+    
+
+        # if self.request.user==announcement.author or self.request.user.is_superuser:
+        #     if self.request.user.email[0:4]=='prof' or self.request.user.is_superuser:
+        #         return True
+        # return False
 

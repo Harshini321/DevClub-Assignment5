@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from .forms import UserRegistrationForm,ProfileUpdateForm,UserUpdateForm
 # ,InstructorRegistrationForm
-
+from courses_available.models import Courses
 from django.contrib.auth.decorators import login_required
 
 from django.views.generic import (
@@ -26,7 +26,7 @@ from .models import Course,Student
 def home(request):
     if request.user.is_superuser or request.user.email[0:4]=='prof':
         context={
-            'courses':[]
+            'courses':Courses.objects.all()
         }
     else:
         context={

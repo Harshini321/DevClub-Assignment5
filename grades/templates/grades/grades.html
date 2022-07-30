@@ -8,7 +8,22 @@
             href="{% url 'grade-create' %}"
             >Add New Grades</a
         >
-    {% endif %}
+        {% for grade in allGrades %}
+            <article class="media content-section">
+                {% comment %} <img class='rounded-circle article-img' src="#"> {% endcomment %}
+                <div class="media-body">
+                <div class="article-metadata">
+                    <p>{{ grade.student }}</p>
+                    {% comment %} <small class="text-muted">{{ grade.date_posted | date:'F d, Y' }}</small> {% endcomment %}
+                    {% comment %} <small class="text-muted">{{ post.date_posted | date:'F d, Y' }}</small> {% endcomment %}
+                </div>
+                <h4><a class="article-title" href="{% url 'grade-detail' grade.id %}">Update Grade</a></h4>
+                <h5 class="article-title">{{ grade.course }} : {{ grade.marks }}</h5>
+                {% comment %} <p class="article-content"></p> {% endcomment %}
+                </div>
+            </article>
+        {% endfor %}
+    {% else %}
 
     {% if not grades %}
         <h3 class='article-title'>Oops! nothing here</h3>
@@ -28,5 +43,6 @@
             </div>
         </article>
     {% endfor %}
+    {% endif %}
 
 {% endblock content %}

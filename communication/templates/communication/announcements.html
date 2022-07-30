@@ -10,7 +10,7 @@
             href="{% url 'announcement-create' %}"
             >Post New Announcement</a
         >
-    {% endif %}
+    
     {% for announcement in announcements %}
         <article class="media content-section">
             {% comment %} <img class='rounded-circle article-img' src="#"> {% endcomment %}
@@ -25,6 +25,14 @@
             </div>
         </article>
     {% endfor %}
+    {% else %}
+        <h3>Please login as Instructor or admin to access this content</h3>
+        <div class="border-top pt-3">
+            <p class="text-muted">
+                <a class='color' href="{% url 'login' %}">Log In</a>
+            </p>
+        </div> 
+    {% endif %}
 
 {% endif %}
 

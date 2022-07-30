@@ -47,6 +47,7 @@ from .models import Courses
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from users.models import Student
 from django.shortcuts import redirect
+from django.contrib import messages
 
 # Create your views here.
 
@@ -97,7 +98,9 @@ def add_course(request, pk):
     student = Student.objects.get(user=request.user)
     if student.courses.contains(course):
         # If course is already present
+        messages.success(request,f'You are already registered in {course} Course')
         return redirect('courses-available')
 
     student.courses.add(course)
+    messages.success(request,f'You are successfully registered to {course} Course')
     return redirect('courses-available')

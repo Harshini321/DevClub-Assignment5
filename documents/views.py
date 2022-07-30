@@ -44,7 +44,7 @@ class DocUpdateView(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
         return super().form_valid(form)
     def test_func(self):
         announcement=self.get_object()
-        if self.request.user==announcement.author:
+        if self.request.user==announcement.author or self.request.user.is_superuser:
             if self.request.user.email[0:4]=='prof' or self.request.user.is_superuser:
                 return True
         return False
@@ -55,7 +55,7 @@ class DocDeleteView(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
     success_url='/documents/'
     def test_func(self):
         document=self.get_object()
-        if self.request.user==document.author:
+        if self.request.user==document.author or self.request.user.is_superuser:
             if self.request.user.email[0:4]=='prof' or self.request.user.is_superuser:
                 return True
         return False

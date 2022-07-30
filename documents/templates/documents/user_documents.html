@@ -1,13 +1,13 @@
 {% extends 'users/base.html' %}
 
 {% block content %}
-<h3 class='mb-3'>Lecture Notes By {{ view.kwargs.username }}</h3>
+<h4 class='mb-3 color'>Lecture Notes By {{ view.kwargs.username }}</h4>
 {% if not documents %}
-    <h2>No documents Yet!</h2>
+    <h4 class='color'>No documents Yet!</h4>
 {% else %}
     {% if user.is_superuser or user.email|slice:4 == 'prof' %}
         <a
-            class="btn btn-secondary btn-sm mt-1 mb-3"
+            class="btn btn-outline-info btn-sm mt-1 mb-3"
             href="{% url 'document-create' %}"
             >Post New Document</a
         >
@@ -17,12 +17,12 @@
             {% comment %} <img class='rounded-circle article-img' src="#"> {% endcomment %}
             <div class="media-body">
             <div class="article-metadata">
-                <a class="mr-2" href="{% url 'user-document' document.author.username %}">{{ document.author }}</a>
+                <a class="mr-2 color" href="{% url 'user-document' document.author.username %}">{{ document.author }}</a>
                 <small class="text-muted">{{ document.date_posted | date:'F d, Y' }}</small>
                 {% comment %} <small class="text-muted">{{ post.date_posted | date:'F d, Y' }}</small> {% endcomment %}
             </div>
-            <h3><a class="article-title" href="{% url 'document-detail' document.id %}">{{ document.title }}</a></h3>
-            <h5><a class="article-title" href="{{ document.file.url }}">View Document</a></h5>
+            <h4><a class="article-title" href="{% url 'document-detail' document.id %}">{{ document.title }}</a></h4>
+            <h6><a class="article-title color" href="{{ document.file.url }}">View Document</a></h6>
             </div>
         </article>
     {% endfor %}

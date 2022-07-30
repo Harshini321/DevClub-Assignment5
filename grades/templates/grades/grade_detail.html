@@ -6,16 +6,16 @@
         {% comment %} <img class='rounded-circle article-img' src="#"> {% endcomment %}
         <div class="media-body">
         <div class="article-metadata">
-            <a class="mr-2" href="#">{{ object.student }}</a>
+            <a class="mr-2 color" href="#">{{ object.student }}</a>
             {% if user.is_superuser %}
                 <div>
                     <a
-                    class="btn btn-secondary btn-sm mt-1 mb-1"
+                    class="btn btn-outline-info btn-sm mt-1 mb-1"
                     href="{% url 'grade-update' object.id %}"
                     >Update</a
                     >
                     <a
-                    class="btn btn-danger btn-sm mt-1 mb-1"
+                    class="btn btn-danger btn-sm mt-1 mb-1 delete"
                     href="{% url 'grade-delete' object.id %}"
                     >Delete</a
                     >
