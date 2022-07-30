@@ -30,6 +30,8 @@ class Instructor(models.Model):
     def __str__(self):
         return self.user.username
 
+
+
 class Admin(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE)
     courses=models.ManyToManyField(Courses,blank=True)
@@ -50,12 +52,12 @@ class Profile(models.Model):
             img.thumbnail(output_size)
             img.save(self.image.path)
 
-from django.db.models.signals import m2m_changed
 
-def courses_changed(sender,**kwargs):
-    u1=User.objects.filter(username='Student1').first()
-    s1=Student.objects.filter(user=u1).first()
-    c1=Courses.objects.filter(title='MTL100').first()
-    s1.courses.add(c1)
-m2m_changed.connect(courses_changed,sender=Student.courses.through)
+# from django.db.models.signals import m2m_changed
 
+# def courses_changed(sender,**kwargs):
+#     u1=User.objects.filter(username='Student1').first()
+#     s1=Student.objects.filter(user=u1).first()
+#     c1=Courses.objects.filter(title='MTL100').first()
+#     s1.courses.add(c1)
+# m2m_changed.connect(courses_changed,sender=Student.courses.through)

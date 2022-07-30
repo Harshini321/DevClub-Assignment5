@@ -66,16 +66,18 @@
                     </fieldset>
                     <div class="form-group">
                         <button class="btn btn-outline-info" type="submit">Login</button>
-                        <small class='text-muted ml-2'>
-                            <a href="{% url 'password_reset' %}">Forgot Password?</a>
+                        <small class='text-muted ml-2 '>
+                            <a class='color' href="{% url 'password_reset' %}">Forgot Password?</a>
                         </small>
                     </div>
                 </form>
                 <div class="border-top pt-3">
-                    <small class="text-muted">
+                    <p class="text-muted">
                         Need An Account?
-                        <a href="{% url 'register' %}" class="ml-2">Register Now</a>
-                    </small>
+                        <small class='text-muted ml-2 '>
+                          <a class='color' href="{% url 'register' %}" class="ml-2">Register Now</a>
+                        </small>
+                    </p>
                     {% comment %} <small class="text-muted">
                        Join as instructor?
                       <a href="{% url 'instructor-register' %}" class="ml-2">Register Now</a>

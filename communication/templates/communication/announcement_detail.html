@@ -3,26 +3,26 @@
   {% comment %} <img class="rounded-circle article-img" src="#" /> {% endcomment %}
   <div class="media-body">
     <div class="article-metadata">
-      <a class="mr-2" href="{% url 'user-announcement' announcement.author %}">{{ announcement.author }}</a>
+      <a class="mr-2 color" href="{% url 'user-announcement' announcement.author %}">{{ announcement.author }}</a>
       <small class="text-muted"
         >{{ announcement.date_posted | date:'F d, Y' }}</small
       >
       {% if object.author == user or user.is_superuser %}
       <div>
         <a
-          class="btn btn-secondary btn-sm mt-1 mb-1"
+          class="btn btn-outline-info btn-sm mt-1 mb-1"
           href="{% url 'announcement-update' announcement.id %}"
           >Update</a
         >
         <a
-          class="btn btn-danger btn-sm mt-1 mb-1"
+          class="btn btn-danger btn-sm mt-1 mb-1 delete"
           href="{% url 'announcement-delete' announcement.id %}"
           >Delete</a
         >
       </div>
       {% endif %}
     </div>
-    <h3 class="article-title">{{ announcement.title }}</h3>
+    <h4 class="article-title ">{{ announcement.title }}</h4>
     <p class="article-content">{{ announcement.content }}</p>
   </div>
 </article>

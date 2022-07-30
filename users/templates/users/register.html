@@ -31,7 +31,7 @@
                 <div class="navbar-nav mr-auto">
                     {% if user.is_authenticated %}
                       <a class="nav-item nav-link" href="{% url 'home-page'%}">Home</a>
-                      <a class="nav-item nav-link" href="{% url 'allCourses-page'%}">Courses</a>
+                      {% comment %} <a class="nav-item nav-link" href="{% url 'allCourses-page'%}">Courses</a> {% endcomment %}
                     {% endif %}
                 </div>
               <!-- Navbar Right Side -->
@@ -71,7 +71,7 @@
                 <div class="border-top pt-3">
                     <small class="text-muted">
                         Already Have An Account?
-                        <a href="{% url 'login' %}" class="ml-2">Log In</a>
+                        <a class='color' href="{% url 'login' %}" class="ml-2">Log In</a>
                     </small>
                 </div>
             </div>

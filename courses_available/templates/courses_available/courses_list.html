@@ -1,9 +1,11 @@
+
+
 {% extends 'users/base.html' %}
 
 {% block content %}
     {% if user.is_superuser %}
         <a
-            class="btn btn-secondary btn-sm mt-1 mb-3"
+            class="btn btn-outline-info btn-sm mt-1 mb-3 mx-1"
             href="{% url 'course-create' %}"
             >Add New Course</a
         >
@@ -14,14 +16,17 @@
             {% comment %} <img class='rounded-circle article-img' src="#"> {% endcomment %}
             <div class="media-body">
             <div class="article-metadata">
-                <h4 class="article-title ">Course : {{ course.title }}</h4>
+                <h4 class="article-title color">Course : {{ course.title }}</h4>
                 
                 {% comment %} <small class="text-muted">{{ post.date_posted | date:'F d, Y' }}</small> {% endcomment %}
             </div>
             <p class="mr-2 mt-2">Course Instructor : {{ course.course_head }}</p>
             {% comment %} <h2 class="article-title" >{{ course.title }}</h2> {% endcomment %}
             <p class="article-content">Description : {{ course.description }}</p>
-            <button type="button" class="btn btn-outline-info">Register</button>
+            <form action="{%url 'add_course' course.id %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-outline-info">Register</button>
+            </form>
             </div>
         </article>
     {% endfor %}

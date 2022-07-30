@@ -25,6 +25,7 @@ from grades.views import GradeCreateView,GradeDetailView,GradeUpdateView,GradeDe
 from communication.views import AnnListView,AnnDetailView,AnnCreateView,AnnUpdateView,AnnDeleteView,UserAnnListView
 from courses_available.views import CourseListView,CourseDetailView,CourseCreateView,CourseUpdateView,CourseDeleteView
 from documents.views import DocListView,DocDetailView,DocCreateView,DocUpdateView,DocDeleteView,UserDocListView
+from courses_available.views import add_course
 # from grades.views import GradeListView
 
 
@@ -32,7 +33,7 @@ from documents.views import DocListView,DocDetailView,DocCreateView,DocUpdateVie
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/',user_views.home,name='home-page'),
-    path('courses/',user_views.allCourses,name='allCourses-page'),
+    # path('courses/',user_views.allCourses,name='allCourses-page'),
     path('register/',user_views.register,name='register'),
     path('',auth_views.LoginView.as_view(template_name='users/login.html'),name='login'),
     path('logout/',auth_views.LogoutView.as_view(template_name='users/logout.html'),name='logout'),
@@ -64,13 +65,10 @@ urlpatterns = [
     path('courses/<int:pk>/',CourseDetailView.as_view(),name='course-detail'),
     path('courses/new/',CourseCreateView.as_view(),name='course-create'),
     path('courses/<int:pk>/update/',CourseUpdateView.as_view(),name='course-update'),
-    path('courses/<int:pk>/delete/',CourseDeleteView.as_view(),name='course-delete')
+    path('courses/<int:pk>/delete/',CourseDeleteView.as_view(),name='course-delete'),
+    path('courses/<int:pk>/add',add_course,name='add_course')
 ]
 
 if settings.DEBUG:
     urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
-# path('grades/', grade_views.index)
-# path('coursepage/',user_views.coursePage,name='course-page'),
 
-# app/model_viewtype.html
-#communication/announcement_list.html

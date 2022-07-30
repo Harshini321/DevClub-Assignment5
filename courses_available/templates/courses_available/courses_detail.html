@@ -6,7 +6,7 @@
         {% comment %} <img class='rounded-circle article-img' src="#"> {% endcomment %}
         <div class="media-body">
         <div class="article-metadata">
-            <h5 class="mr-2">Course Instructor : {{ object.course_head }}</h5>
+            <h5 class="mr-2 color">Course Instructor : {{ object.course_head }}</h5>
             {% if user.is_superuser %}
                 <div>
                     <a
@@ -23,19 +23,19 @@
             {% endif %}
             {% comment %} <small class="text-muted">{{ post.date_posted | date:'F d, Y' }}</small> {% endcomment %}
         </div>
-        <h2 class="article-title">{{ object.title }}</h2>
+        <h3 class="article-title color">{{ object.title }}</h3>
         <p class="article-content">{{ object.description }}</p>
         </div>
     </article>
     <article class="media content-section">
         <div class="media-body">
         <div class="article-metadata">
-            <h5><a class="mr-2" href="{% url 'user-document' object.course_head %}">Lecture Notes</a></h5>
+            <h5><a class="mr-2 color" href="{% url 'user-document' object.course_head %}">Lecture Notes</a></h5>
     </article>
     <article class="media content-section">
         <div class="media-body">
         <div class="article-metadata">
-            <h5><a class="mr-2" href="{% url 'user-announcement' object.course_head %}">Announcements</a></h5>
+            <h5><a class="mr-2 color" href="{% url 'user-announcement' object.course_head %}">Announcements</a></h5>
     </article>
 
 {% endblock content %}

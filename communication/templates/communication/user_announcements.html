@@ -1,7 +1,7 @@
 {% extends 'users/base.html' %}
 
 {% block content %}
-<h3 class='mb-3'>Announcements by {{ view.kwargs.username }}</h3>
+    <h4 class='mb-3 mx-2'>Announcements by {{ view.kwargs.username }}</h4>
 {% if not announcements %}
     <h4>No announcements Yet!</h4>
 {% else %}
@@ -17,11 +17,11 @@
             {% comment %} <img class='rounded-circle article-img' src="#"> {% endcomment %}
             <div class="media-body">
             <div class="article-metadata">
-                <a class="mr-2" href="{% url 'user-announcement' announcement.author %}">{{ announcement.author }}</a>
+                <a class="mr-2 color" href="{% url 'user-announcement' announcement.author %}">{{ announcement.author }}</a>
                 <small class="text-muted">{{ announcement.date_posted | date:'F d, Y' }}</small>
                 {% comment %} <small class="text-muted">{{ post.date_posted | date:'F d, Y' }}</small> {% endcomment %}
             </div>
-            <h3><a class="article-title" href="{% url 'announcement-detail' announcement.id %}">{{ announcement.title }}</a></h3>
+            <h4><a class="article-title" href="{% url 'announcement-detail' announcement.id %}">{{ announcement.title }}</a></h4>
             <p class="article-content">{{ announcement.content }}</p>
             </div>
         </article>

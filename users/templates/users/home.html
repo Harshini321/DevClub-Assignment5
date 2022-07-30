@@ -2,8 +2,8 @@
 
 {% block content %}
 {% if not courses %}
-    <h3>You are not Registered in any course yet!</h3>
-    <a href="{% url 'courses-available' %}" class="ml-2">Register Now</a>
+    <h3 class='article-title'>You are not Registered in any course yet!</h3>
+    <a class='color' href="{% url 'courses-available' %}" class="ml-2">Register Now</a>
 {% endif %}
 
 
@@ -13,7 +13,7 @@
         {% comment %} <img class='rounded-circle article-img' src="#"> {% endcomment %}
         <div class="media-body">
         <div class="article-metadata">
-            <p class="mr-2">{{ course.course_head }}</p>
+            <p class="mr-2 color">{{ course.course_head }}</p>
             {% comment %} <small class="text-muted">{{ post.date_posted | date:'F d, Y' }}</small> {% endcomment %}
         </div>
         <h3><a class="article-title" href="{% url 'course-detail' course.id %}">{{ course.title }}</a></h3>
