@@ -1,27 +1,24 @@
 {% extends 'users/base.html' %} {% block content %}
 <article class="media content-section">
-  {% comment %} <img class="rounded-circle article-img" src="#" /> {% endcomment %}
   <div class="media-body">
     <div class="article-metadata">
       <a class="mr-2 color" href="{% url 'user-document' document.author %}">{{ document.author }}</a>
       <small class="text-muted"
         >{{ document.date_posted | date:'F d, Y' }}</small
       >
-      {% comment %}
-      <small class="text-muted">{{ post.date_posted | date:'F d, Y' }}</small>
-      {% endcomment %} {% if object.author == user or user.is_superuser%}
-      <div>
-        <a
-          class="btn btn-outline-info btn-sm mt-1 mb-1"
-          href="{% url 'document-update' document.id %}"
-          >Update</a
-        >
-        <a
-          class="btn btn-danger btn-sm mt-1 mb-1 delete"
-          href="{% url 'document-delete' document.id %}"
-          >Delete</a
-        >
-      </div>
+      {% if object.author == user or user.is_superuser%}
+        <div>
+          <a
+            class="btn btn-outline-info btn-sm mt-1 mb-1"
+            href="{% url 'document-update' document.id %}"
+            >Update</a
+          >
+          <a
+            class="btn btn-danger btn-sm mt-1 mb-1 delete"
+            href="{% url 'document-delete' document.id %}"
+            >Delete</a
+          >
+        </div>
       {% endif %}
     </div>
     <h3 class="article-title mt-2 mb-2">{{ document.title }}</h3>

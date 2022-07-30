@@ -5,7 +5,6 @@ from django.urls import reverse
 
 # Create your models here.
 class Grade(models.Model):
-    # course = models.CharField(max_length=6,default='AAAXXX')
     course=models.ForeignKey(Courses,on_delete=models.CASCADE)
     marks = models.fields.IntegerField()
     student = models.ForeignKey(User, on_delete=models.CASCADE)

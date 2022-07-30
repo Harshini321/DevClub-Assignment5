@@ -3,7 +3,6 @@
 {% block content %}
 
     <article class="media content-section">
-        {% comment %} <img class='rounded-circle article-img' src="#"> {% endcomment %}
         <div class="media-body">
         <div class="article-metadata">
             <h5 class="mr-2 color">Course Instructor : {{ object.course_head }}</h5>
@@ -21,10 +20,9 @@
                     >
                 </div>
             {% endif %}
-            {% comment %} <small class="text-muted">{{ post.date_posted | date:'F d, Y' }}</small> {% endcomment %}
         </div>
-        <h3 class="article-title color">{{ object.title }}</h3>
-        <p class="article-content">{{ object.description }}</p>
+            <h3 class="article-title color">{{ object.title }}</h3>
+            <p class="article-content">{{ object.description }}</p>
         </div>
     </article>
     <article class="media content-section">

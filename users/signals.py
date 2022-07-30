@@ -10,7 +10,6 @@ def create_student(sender,instance,created,**kwargs):
         temp=sender.objects.last().email
         if temp[:4]=='prof':
             Instructor.objects.create(user=instance)
-            # InstructorName.objects.create(user=instance)
         else:
             Student.objects.create(user=instance)
 

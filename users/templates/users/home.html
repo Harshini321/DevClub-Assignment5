@@ -10,11 +10,9 @@
 {% for course in courses %}
 
     <article class="media content-section">
-        {% comment %} <img class='rounded-circle article-img' src="#"> {% endcomment %}
         <div class="media-body">
         <div class="article-metadata">
             <p class="mr-2 color">{{ course.course_head }}</p>
-            {% comment %} <small class="text-muted">{{ post.date_posted | date:'F d, Y' }}</small> {% endcomment %}
         </div>
         <h3><a class="article-title" href="{% url 'course-detail' course.id %}">{{ course.title }}</a></h3>
         <p class="article-content">{{ course.description }}</p>

@@ -7,31 +7,9 @@
         <div class="media-body">
         <div class="article-metadata">
             <a class="mr-2" href="#">{{ object.course_head }}</a>
-            {% comment %} <small class="text-muted">{{ post.date_posted | date:'F d, Y' }}</small> {% endcomment %}
         </div>
         <h2><a class="article-title" href="#">{{ object.title }}</a></h2>
         <p class="article-content">{{ object.description }}</p>
         </div>
     </article>
-    <article class="media content-section">
-        <div class="media-body">
-        <div class="article-metadata">
-            <h2>Class Notes</h2>
-        </div>
-            <p class="article-content">Note1</p>
-            <p class="article-content">Note2</p>
-            <p class="article-content">Note3</p>
-        </div>
-    </article>
-    <article class="media content-section">
-        <div class="media-body">
-        <div class="article-metadata">
-            <h2>Announcements</h2>
-        </div>
-            <p class="article-content">msg 1</p>
-            <p class="article-content">msg 2</p>
-            <p class="article-content">msg 3</p>
-        </div>
-    </article>
-
 {% endblock content %}

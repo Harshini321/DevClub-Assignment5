@@ -14,12 +14,10 @@
     {% endif %}
     {% for announcement in announcements %}
         <article class="media content-section">
-            {% comment %} <img class='rounded-circle article-img' src="#"> {% endcomment %}
             <div class="media-body">
             <div class="article-metadata">
                 <a class="mr-2 color" href="{% url 'user-announcement' announcement.author %}">{{ announcement.author }}</a>
                 <small class="text-muted">{{ announcement.date_posted | date:'F d, Y' }}</small>
-                {% comment %} <small class="text-muted">{{ post.date_posted | date:'F d, Y' }}</small> {% endcomment %}
             </div>
             <h4><a class="article-title" href="{% url 'announcement-detail' announcement.id %}">{{ announcement.title }}</a></h4>
             <p class="article-content">{{ announcement.content }}</p>

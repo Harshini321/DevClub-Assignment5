@@ -12,12 +12,10 @@
         >
     {% for document in documents %}
         <article class="media content-section">
-            {% comment %} <img class='rounded-circle article-img' src="#"> {% endcomment %}
             <div class="media-body">
             <div class="article-metadata">
                 <a class="mr-2 color" href="{% url 'user-document' document.author.username %}">{{ document.author }}</a>
                 <small class="text-muted">{{ document.date_posted | date:'F d, Y' }}</small>
-                {% comment %} <small class="text-muted">{{ post.date_posted | date:'F d, Y' }}</small> {% endcomment %}
             </div>
             <h4><a class="article-title" href="{% url 'document-detail' document.id %}">{{ document.title }}</a></h4>
             <h6><a class="article-title color" href="{{ document.file.url }}">View Document</a></h6>

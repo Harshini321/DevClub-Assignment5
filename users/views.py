@@ -5,19 +5,11 @@ from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from .forms import UserRegistrationForm,ProfileUpdateForm,UserUpdateForm
-# ,InstructorRegistrationForm
 from courses_available.models import Courses
 from django.contrib.auth.decorators import login_required
-
 from django.views.generic import (
-    ListView,
     DetailView,
-    CreateView,
-    UpdateView,
-    DeleteView
 )
-
-# courses data from db
 from .models import Course,Student
 # Create your views here.
 
@@ -44,7 +36,6 @@ def allCourses(request):
 
 def register(request):
     if request.method=='POST':
-        # print(request.POST.email)
         form=UserRegistrationForm(request.POST)
         if form.is_valid():
             form.save()
