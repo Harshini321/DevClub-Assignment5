@@ -21,7 +21,7 @@ from users import views as user_views
 from django.contrib.auth import views as auth_views
 from grades import views as grade_views
 from grades.views import GradeCreateView,GradeDetailView,GradeUpdateView,GradeDeleteView
-from communication.views import AnnListView,AnnDetailView,AnnCreateView,AnnUpdateView,AnnDeleteView,UserAnnListView
+from communication.views import AnnListView,AnnDetailView,AnnCreateView,AnnUpdateView,AnnDeleteView,UserAnnListView,CommentListView,CommentDetailView
 from courses_available.views import CourseListView,CourseDetailView,CourseCreateView,CourseUpdateView,CourseDeleteView
 from documents.views import DocListView,DocDetailView,DocCreateView,DocUpdateView,DocDeleteView,UserDocListView
 from courses_available.views import add_course
@@ -45,6 +45,8 @@ urlpatterns = [
     path('announcements/<int:pk>/update/',AnnUpdateView.as_view(),name='announcement-update'),
     path('announcements/<int:pk>/delete/',AnnDeleteView.as_view(),name='announcement-delete'),
     path('announcements/<str:username>/',UserAnnListView.as_view(),name='user-announcement'),
+    path('comments/',CommentListView.as_view(),name='comments'),
+    path('comments/<int:pk>/',CommentDetailView.as_view(),name='comment-detail'),
     path('documents/',DocListView.as_view(),name='documents'),
     path('documents/<int:pk>/',DocDetailView.as_view(),name='document-detail'),
     path('documents/new/',DocCreateView.as_view(),name='document-create'),

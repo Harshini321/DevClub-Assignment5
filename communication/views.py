@@ -1,4 +1,4 @@
-
+from django.shortcuts import render,redirect
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 from django.views.generic import (
@@ -8,8 +8,9 @@ from django.views.generic import (
     UpdateView,
     DeleteView
     )
-from .models import Announcement
+from .models import Announcement,Comment
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -70,3 +71,19 @@ class UserAnnListView(LoginRequiredMixin,ListView):
         user=get_object_or_404(User,username=self.kwargs.get('username'))
         return Announcement.objects.filter(author=user).order_by('-date_posted')
 
+class CommentListView(LoginRequiredMixin,ListView):
+    model=Comment
+    template_name='communication/comments.html'
+    context_object_name='comments'
+    ordering=['-date_posted']
+
+class CommentDetailView(LoginRequiredMixin,DetailView):
+    model=Comment
+    context_object_name='comment'
+
+# @login_required
+# def Comments_ann(request):
+#     context={
+#         'comments':Announcement.objects.filter()
+#     }
+#     return render(request,'users/allCourses.html',context)

@@ -1,0 +1,24 @@
+{% extends 'users/base.html' %}
+{% block content %}
+{% if not comments %}
+    <h3>No comments Yet!</h3>
+{% else %}
+        <a
+            class="btn btn-outline-info btn-sm mt-1 mb-3 mx-1"
+            href="#"
+            >Post New comment</a
+        >
+    {% for comment in comments %}
+        <article class="media content-section">
+            <div class="media-body">
+            <div class="article-metadata">
+                <a class="mr-2 color" href="#">{{ comment.author }}</a>
+                <small class="text-muted">{{ comment.date_posted | date:'F d, Y' }}</small>
+            </div>
+            <h4><a class="article-title" href="{% url 'comment-detail' comment.id %}">{{ comment.title }}</a></h4>
+            <p class="article-content">{{ comment.content }}</p>
+            </div>
+        </article>
+    {% endfor %}
+{% endif %}
+{% endblock content %}
